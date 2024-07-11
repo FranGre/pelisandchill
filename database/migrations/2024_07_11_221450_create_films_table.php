@@ -14,9 +14,11 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('title')->max(100);
-            $table->string('sumary')->max(255);
+            $table->string('summary')->max(255);
             $table->smallInteger('year');
             $table->string('director')->max(100);
+            $table->string('poster');
+            $table->string('video');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
