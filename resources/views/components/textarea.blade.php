@@ -1,3 +1,7 @@
-<div>
-    <!-- If you do not have a consistent goal in life, you can not live it in a consistent way. - Marcus Aurelius -->
-</div>
+<textarea
+    {{ $attributes->merge([
+        'class' =>
+            'rounded px-3 py-2 focus:border-blue-500
+            bg-gray-200 hover:bg-gray-100
+            dark:bg-zinc-700 dark:hover:bg-zinc-600' . $class,
+    ]) }}></textarea>

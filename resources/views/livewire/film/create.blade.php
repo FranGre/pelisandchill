@@ -38,7 +38,7 @@ $save = function () {
     <form wire:submit='save' class="flex flex-col space-y-12" enctype="multipart/form-data">
 
         <div class="flex flex-col">
-            <input type="text" wire:model='title' placeholder="Title..." />
+            <x-input-text wire:model='title' placeholder="Title..." />
             @error('title')
                 <span class="mt-3 text-red-600">{{ $message }}</span>
             @enderror
@@ -46,21 +46,21 @@ $save = function () {
 
 
         <div class="flex flex-col">
-            <input type="text" wire:model='director' placeholder="Director..." />
+            <x-input-text wire:model='director' placeholder="Director..." />
             @error('director')
                 <span class="mt-3 text-red-600">{{ $message }}</span>
             @enderror
         </div>
 
         <div class="flex flex-col">
-            <input type="text" wire:model='year' placeholder="Year..." />
+            <x-input-text wire:model='year' placeholder="Year..." />
             @error('year')
                 <span class="mt-3 text-red-600">{{ $message }}</span>
             @enderror
         </div>
 
         <div class="flex flex-col">
-            <textarea cols="30" rows="10" wire:model='summary'></textarea>
+            <x-textarea cols="30" rows="10" wire:model='summary' placeholder='Summary...'></x-textarea>
             @error('summary')
                 <span class="mt-3 text-red-600">{{ $message }}</span>
             @enderror

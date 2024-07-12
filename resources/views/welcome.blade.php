@@ -40,11 +40,7 @@
                         dark:bg-neutral-800">
                             <img src="{{ asset('storage/' . $film->poster) }}" alt="Cover {{ $film->title }}"
                                 class="rounded">
-                            <div class="p-3">
-                                <h2 class="text-xl font-bold">{{ $film->title }}</h2>
-                                <p class="text-left">{{ $film->director }}</p>
-                                <p class="text-left">{{ $film->year }}</p>
-                            </div>
+                            <h2 class="text-xl font-bold p-3">{{ $film->title }}</h2>
                         </div>
                     </a>
                 @endforeach
