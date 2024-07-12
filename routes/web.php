@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
-Route::view('/', 'welcome');
+Route::get('/', WelcomeController::class)->name('welcome');
+Volt::route('view/film/{film_id}', 'film.show')->name('film.show');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
