@@ -1,8 +1,11 @@
 <?php
 
-use function Livewire\Volt\{state, rules};
+use function Livewire\Volt\{usesFileUploads, state, rules, mount};
+use App\Models\Film;
 
-state(['title', 'director', 'year', 'summary', 'poster', 'video']);
+usesFileUploads();
+
+state(['user_id', 'title', 'director', 'year', 'summary', 'poster', 'video']);
 
 rules([
     'title' => 'required|string|max:100',
@@ -13,9 +16,19 @@ rules([
     'video' => 'required|mimes:mp4,mov,mkv',
 ]);
 
+mount(function () {
+    $this->user_id = Auth::user()->id;
+});
+
 $save = function () {
     $this->validate();
-    dd($this->all());
+
+    $this->poster = $this->poster->store('posters', 'public');
+    $this->video = $this->video->store('videos', 'public');
+
+    Film::create($this->all());
+
+    return $this->redirect(route('welcome'), true);
 };
 
 ?>
