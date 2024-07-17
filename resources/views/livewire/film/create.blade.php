@@ -22,6 +22,8 @@ mount(function () {
 
 $save = function () {
     $this->validate();
+    dd($this->all());
+    return;
 
     $this->poster = $this->poster->store('posters', 'public');
     $this->video = $this->video->store('videos', 'public');
@@ -44,7 +46,6 @@ $save = function () {
             @enderror
         </div>
 
-
         <div class="flex flex-col">
             <x-input-text wire:model='director' placeholder="Director..." />
             @error('director')
@@ -66,18 +67,12 @@ $save = function () {
             @enderror
         </div>
 
-        <div class="flex flex-col">
-            <input type="file" wire:model='poster' />
-            @error('poster')
-                <span class="mt-3 text-red-600">{{ $message }}</span>
-            @enderror
+        <div>
+            <x-livewire-filepond wire:model="poster" accept="image/*" labelIdle='Arrastra y suelta tu portada o <span class="filepond--label-action"> Explorar </span>' />
         </div>
 
-        <div class="flex flex-col">
-            <input type="file" wire:model='video' />
-            @error('video')
-                <span class="mt-3 text-red-600">{{ $message }}</span>
-            @enderror
+        <div>
+            <x-livewire-filepond wire:model="video" accept="video/mp4, video/mov, video/mkv" labelIdle='Arrastra y suelta tu película o <span class="filepond--label-action"> Explorar </span>'/>
         </div>
 
         <button type="submit">Save</button>
