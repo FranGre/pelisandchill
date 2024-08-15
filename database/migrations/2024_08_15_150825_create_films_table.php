@@ -14,11 +14,11 @@ return new class extends Migration {
             $table->id();
             // cover_id
             // film_id
-            $table->string('title');
-            $table->string('duration');
-            $table->string('director');
-            $table->string('release_date');
-            $table->string('sipnosis');
+            $table->string('title', 50);
+            $table->smallInteger('duration');
+            $table->string('director', 50);
+            $table->year('release_date');
+            $table->text('sipnosis');
             $table->timestamps();
         });
     }
