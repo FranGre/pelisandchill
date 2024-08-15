@@ -25,6 +25,8 @@ $save = function () {
         'director' => $this->director
     ]);
 
+    $this->redirect('/');
+
 }
 
 ?>
@@ -37,31 +39,30 @@ $save = function () {
             <div class="space-y-12">
                 <div>
                     <x-text-input wire:model='title' placeholder="Title..." />
-                    @error('title') <span class="text-red-500">{{ $message }}</span> @enderror
+                    @error('title') <x-error-message>{{ $message }}</x-error-message> @enderror
                 </div>
 
                 <div>
                     <x-text-input wire:model='duration' placeholder="Duration..." />
-                    @error('duration') <span class="text-red-500">{{ $message }}</span> @enderror
+                    @error('duration') <x-error-message>{{ $message }}</x-error-message> @enderror
 
                 </div>
 
                 <div>
                     <x-text-input wire:model='release_date' placeholder="Fecha lanzamiento..." />
-                    @error('release_date') <span class="text-red-500">{{ $message }}</span> @enderror
-
+                    @error('release_date') <x-error-message>{{ $message }}</x-error-message> @enderror
                 </div>
             </div>
 
             <div class="space-y-12">
                 <div>
                     <x-text-input wire:model='sipnosis' placeholder="sipnosis..." />
-                    @error('sipnosis') <span class="text-red-500">{{ $message }}</span> @enderror
+                    @error('sipnosis') <x-error-message>{{ $message }}</x-error-message> @enderror
                 </div>
 
                 <div>
                     <x-text-input wire:model='director' placeholder="director..." />
-                    @error('director') <span class="text-red-500">{{ $message }}</span> @enderror
+                    @error('director') <x-error-message>{{ $message }}</x-error-message> @enderror
                 </div>
             </div>
         </div>
