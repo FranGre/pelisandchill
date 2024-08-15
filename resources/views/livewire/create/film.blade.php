@@ -1,13 +1,30 @@
 <?php
 
-use function Livewire\Volt\{state, layout};
+use function Livewire\Volt\{state, layout, rules};
+use App\Models\Film;
 
 layout('components.layouts.app');
 
-state(['title', 'duration', 'release_data', 'sipnosis', 'director']);
+state(['title', 'duration', 'release_date', 'sipnosis', 'director']);
+
+rules([
+'title' => 'required|string|max:50',
+'duration' => 'required|integer|between:0,300',
+'release_date' => 'required|integer|between:1900,2150',
+'sipnosis' => 'required|string|max:500',
+'director' => 'required|string|max:50']);
 
 $save = function () {
-    dd($this->all());
+    $this->validate();
+
+    Film::create([
+        'title' => $this->title,
+        'duration' => $this->duration,
+        'release_date' => $this->release_date,
+        'sipnosis' => $this->sipnosis,
+        'director' => $this->director
+    ]);
+
 }
 
 ?>
@@ -20,32 +37,31 @@ $save = function () {
             <div class="space-y-12">
                 <div>
                     <x-text-input wire:model='title' placeholder="Title..." />
+                    @error('title') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div>
 
                 <div>
                     <x-text-input wire:model='duration' placeholder="Duration..." />
+                    @error('duration') <span class="text-red-500">{{ $message }}</span> @enderror
+
                 </div>
 
                 <div>
-                    <x-text-input wire:model='release_data' placeholder="Fecha lanzamiento..." />
+                    <x-text-input wire:model='release_date' placeholder="Fecha lanzamiento..." />
+                    @error('release_date') <span class="text-red-500">{{ $message }}</span> @enderror
+
                 </div>
             </div>
 
             <div class="space-y-12">
                 <div>
                     <x-text-input wire:model='sipnosis' placeholder="sipnosis..." />
+                    @error('sipnosis') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div>
 
                 <div>
                     <x-text-input wire:model='director' placeholder="director..." />
-                </div>
-
-                <div>
-                    <x-text-input type="file" placeholder="dover..." />
-                </div>
-
-                <div>
-                    <x-text-input type="file" placeholder="texto..." />
+                    @error('director') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div>
             </div>
         </div>
