@@ -31,6 +31,8 @@ $save = function () {
 
 ?>
 
+@vite('resources/js/dropzone/cover.js')
+
 <div>
     <h1>New Film</h1>
     <form wire:submit='save'>
@@ -63,6 +65,10 @@ $save = function () {
                 <div>
                     <x-text-input wire:model='director' placeholder="director..." />
                     @error('director') <x-error-message>{{ $message }}</x-error-message> @enderror
+                </div>
+
+                <div>
+                    <div id="cover" class="dropzone"></div>
                 </div>
             </div>
         </div>

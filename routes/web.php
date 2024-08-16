@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UploadCoverController;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -15,4 +16,6 @@ Route::view('profile', 'profile')
 
 Volt::route('new/film', 'create.film')->name('film.create');
 
+
+Route::post('/upload/cover', UploadCoverController::class)->name('upload.cover');
 require __DIR__ . '/auth.php';
